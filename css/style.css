@@ -865,6 +865,17 @@ footer {
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
+        /* Ensure full width clickable/border */
+    }
+
+    /* Ensure active link keeps the border on mobile */
+    .nav-menu a.active {
+        border-bottom: 1px solid #eee;
+        /* No highlight border */
+        color: var(--primary-color);
+        background-color: transparent;
+        /* No highlight background */
     }
 
     .logo-text h1 {

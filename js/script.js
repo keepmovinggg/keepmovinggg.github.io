@@ -19,6 +19,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Active Link Highlighting
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            // Remove active class from all
+            navLinks.forEach(l => l.classList.remove('active'));
+            // Add to clicked
+            this.classList.add('active');
+        });
+    });
+
+    // Mobile Default State: Remove default active (Home) on mobile
+    if (window.innerWidth <= 768) {
+        const activeLink = document.querySelector('.nav-menu a.active');
+        if (activeLink) {
+            activeLink.classList.remove('active');
+        }
+    }
+
     // Smooth Scrolling for Anchor Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
