@@ -835,14 +835,14 @@ footer {
     .header {
         height: auto;
     }
-    
+
     .nav-menu {
         display: none;
         /* Hidden by default, JS toggles this */
         z-index: 1001;
         /* Ensure it's above other things */
     }
-    
+
     .hamburger {
         display: flex;
         flex-direction: column;
@@ -881,7 +881,7 @@ footer {
         font-size: 1.5rem;
     }
 
-    /* 3. Hero Section (Stacking) */
+    /* 3. Hero Section (Stacking & Ratio Fix) */
     .hero {
         height: auto;
         /* Dynamic height */
@@ -897,17 +897,21 @@ footer {
 
     .hero-left-carousel {
         width: 100%;
-        height: 50vw;
-        /* Proportional to width, e.g., half square */
-        min-height: 250px;
+        /* Maintain desktop aspect ratio (~1.6:1), so on mobile width (100vw - padding), height is roughly 60vw */
+        height: 60vw;
         flex: none;
         /* Reset flex */
+    }
+
+    .slide {
+        background-size: cover;
+        /* or contain, but cover fills the box */
     }
 
     .slide-content h1 {
         font-size: 1.5rem;
     }
-    
+
     .slide-content h2 {
         font-size: 1rem;
     }
@@ -916,22 +920,33 @@ footer {
         width: 100%;
         flex: none;
         height: auto;
-        min-height: 300px; /* Ensure space for news */
+        min-height: 300px;
+        /* Ensure space for news */
     }
 
-    /* 4. Advantage Section */
+    /* 4. Advantage Section (2 Columns) */
     .advantage-grid {
-        grid-template-columns: 1fr; /* Stack vertically */
-        height: auto; /* Allow auto height */
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 Columns on mobile */
+        height: auto;
+        /* Allow auto height */
         gap: 15px;
     }
-    
+
     .adv-card {
-        height: auto; /* Auto height for content */
+        height: auto;
+        /* Auto height for content */
         padding: 15px;
+        flex-direction: column;
+        /* Stack icon and text inside card if needed, or keep row. keeping row is safer for small cards */
+        align-items: flex-start;
     }
 
-    /* 5. About Section */
+    .adv-icon {
+        margin-bottom: 10px;
+    }
+
+    /* 5. About Section (Hide Right Card) */
     .about-content-box {
         flex-direction: column;
         gap: 20px;
@@ -941,66 +956,36 @@ footer {
         text-align: left;
     }
 
+    /* Hide About Right Card on Mobile */
     .about-card-right {
-        width: 100%; /* Full width */
-        height: auto;
-        padding-bottom: 20px;
-    }
-    
-    .card-image {
-        position: relative;
-        height: 200px;
+        display: none !important;
     }
 
-    /* 6. Services Section */
+    /* 6. Services Section (Hide Feature Card) */
     .services-container {
         flex-direction: column;
         height: auto;
     }
 
+    /* Hide Service Feature Card on Mobile */
     .service-feature-card {
-        width: 100%;
-        height: auto;
-        flex-direction: row; /* Keep compact if possible, or stack */
-        /* Let's try to keep it vertical but smaller, or just standard box */
-        min-height: 300px;
-    }
-
-    .feature-text, .feature-title {
-        writing-mode: horizontal-tb; 
-        position: static;
-        height: auto;
-        margin-bottom: 10px;
-    }
-    
-    .feature-text {
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-        align-items: center;
-    }
-    
-    .feature-title {
-        display: block;
-        text-align: center;
-    }
-    
-    .feature-image {
-        margin-top: 10px;
-        height: 200px;
+        display: none !important;
     }
 
     .services-grid-new {
-        grid-template-columns: 1fr; /* 1 column */
+        grid-template-columns: 1fr;
+        /* 1 column for service list, or 2? User didn't specify, but 1 is safer for card content. Sticking to 1. */
         height: auto;
     }
 
     .service-item {
-        height: auto; /* Auto height */
-        flex-direction: row; /* Horizontal card on mobile */
+        height: auto;
+        /* Auto height */
+        flex-direction: row;
+        /* Horizontal card on mobile */
         align-items: center;
     }
-    
+
     .s-img {
         width: 80px;
         margin-bottom: 0;
@@ -1013,8 +998,9 @@ footer {
         text-align: center;
         gap: 20px;
     }
-    
-    .footer-links, .footer-contact {
+
+    .footer-links,
+    .footer-contact {
         width: 100%;
     }
 
@@ -1022,11 +1008,11 @@ footer {
     .announcement-bar .container {
         padding: 0 10px;
     }
-    
+
     .announcement-label {
         font-size: 0.8rem;
     }
-    
+
     .announcement-content {
         font-size: 0.8rem;
     }
