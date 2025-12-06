@@ -812,4 +812,222 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Responsive styles removed to enforce fixed desktop layout */
+/* =========================================
+   Mobile Adaptation (max-width: 768px)
+   ========================================= */
+@media (max-width: 768px) {
+
+    /* 1. General Layout Resets */
+    body {
+        min-width: 100%;
+        overflow-x: hidden;
+        /* Prevent horizontal scroll */
+        width: 100%;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0 15px;
+        /* Add side padding */
+    }
+
+    /* 2. Header & Navigation */
+    .header {
+        height: auto;
+    }
+    
+    .nav-menu {
+        display: none;
+        /* Hidden by default, JS toggles this */
+        z-index: 1001;
+        /* Ensure it's above other things */
+    }
+    
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+    }
+
+    .hamburger span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: #333;
+        border-radius: 3px;
+    }
+
+    .nav-menu a {
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo-text h1 {
+        font-size: 1.2rem;
+    }
+
+    .logo-text p {
+        font-size: 0.6rem;
+    }
+
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+
+    /* 3. Hero Section (Stacking) */
+    .hero {
+        height: auto;
+        /* Dynamic height */
+        padding-bottom: 30px;
+        min-width: 100%;
+    }
+
+    .hero-container {
+        flex-direction: column;
+        height: auto;
+        gap: 20px;
+    }
+
+    .hero-left-carousel {
+        width: 100%;
+        height: 50vw;
+        /* Proportional to width, e.g., half square */
+        min-height: 250px;
+        flex: none;
+        /* Reset flex */
+    }
+
+    .slide-content h1 {
+        font-size: 1.5rem;
+    }
+    
+    .slide-content h2 {
+        font-size: 1rem;
+    }
+
+    .hero-right-news {
+        width: 100%;
+        flex: none;
+        height: auto;
+        min-height: 300px; /* Ensure space for news */
+    }
+
+    /* 4. Advantage Section */
+    .advantage-grid {
+        grid-template-columns: 1fr; /* Stack vertically */
+        height: auto; /* Allow auto height */
+        gap: 15px;
+    }
+    
+    .adv-card {
+        height: auto; /* Auto height for content */
+        padding: 15px;
+    }
+
+    /* 5. About Section */
+    .about-content-box {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .about-text-left {
+        text-align: left;
+    }
+
+    .about-card-right {
+        width: 100%; /* Full width */
+        height: auto;
+        padding-bottom: 20px;
+    }
+    
+    .card-image {
+        position: relative;
+        height: 200px;
+    }
+
+    /* 6. Services Section */
+    .services-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .service-feature-card {
+        width: 100%;
+        height: auto;
+        flex-direction: row; /* Keep compact if possible, or stack */
+        /* Let's try to keep it vertical but smaller, or just standard box */
+        min-height: 300px;
+    }
+
+    .feature-text, .feature-title {
+        writing-mode: horizontal-tb; 
+        position: static;
+        height: auto;
+        margin-bottom: 10px;
+    }
+    
+    .feature-text {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    .feature-title {
+        display: block;
+        text-align: center;
+    }
+    
+    .feature-image {
+        margin-top: 10px;
+        height: 200px;
+    }
+
+    .services-grid-new {
+        grid-template-columns: 1fr; /* 1 column */
+        height: auto;
+    }
+
+    .service-item {
+        height: auto; /* Auto height */
+        flex-direction: row; /* Horizontal card on mobile */
+        align-items: center;
+    }
+    
+    .s-img {
+        width: 80px;
+        margin-bottom: 0;
+        margin-right: 15px;
+    }
+
+    /* 7. Footer */
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .footer-links, .footer-contact {
+        width: 100%;
+    }
+
+    /* Scrolling text adjustment */
+    .announcement-bar .container {
+        padding: 0 10px;
+    }
+    
+    .announcement-label {
+        font-size: 0.8rem;
+    }
+    
+    .announcement-content {
+        font-size: 0.8rem;
+    }
+}
